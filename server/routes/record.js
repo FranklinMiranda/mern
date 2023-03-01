@@ -25,7 +25,7 @@ recordRoutes.route("/record").get(function (req, res) {
 
 // This section will help you get a single record by id
 recordRoutes.route("/record/:id").get(function (req, res) {
-    let db_connect = db.getDb();
+    let db_connect = dbo.getDb();
     let myquery = { _id: ObjectID(req.params.id)};
     db_connect 
         .collection("records")
@@ -36,7 +36,7 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 });
 
 // This section will help you create a new record 
-recordRoutes.Routes.route("/record/add").post(function (req, response) {
+recordRoutes.route("/record/add").post(function (req, response) {
     let db_connect = dbo.getDb();
     let myobj = {
         name: req.body.name,
@@ -50,10 +50,10 @@ recordRoutes.Routes.route("/record/add").post(function (req, response) {
 });
 
 // This section will help you update a record by id
-recordRoutes.Routes.route("/update/:id").post(function (req, response) {
+recordRoutes.route("/update/:id").post(function (req, response) {
     let db_connect = dbo.getDb();
-    let myquery - { _id: ObjectID(req.params.id)};
-    let newvalue = {
+    let myquery = { _id: ObjectID(req.params.id)};
+    let newvalues = {
         $set: {
             name: req.body.name,
             position: req.body.position,
